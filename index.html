@@ -556,6 +556,84 @@
   .card img { cursor: zoom-in; transition: transform 0.2s; }
   .card img:hover { transform: scale(1.02); }
 
+
+  /* ── ENHANCED RESPONSIVENESS ── */
+  :root {
+    --container-width: 1120px;
+  }
+
+  .page { 
+    max-width: var(--container-width); 
+    width: 100%;
+    padding: 20px; 
+  }
+
+  /* Improved Grid System */
+  .grid2, .grid3, .tasks-grid, .market-kpi-strip, .pillars-grid, .challenge-grid, .market-grid {
+    display: grid;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .grid2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .grid3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .tasks-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+  .pillars-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .challenge-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .market-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .market-kpi-strip { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+
+  /* Ensure images don't overflow */
+  img { max-width: 100%; height: auto; object-fit: contain; }
+
+  /* Responsive Tables */
+  .vs-table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .vs-table { min-width: 600px; }
+
+  /* Tab Bar Mobile Fix */
+  .tabs-bar {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    scrollbar-width: none; /* Firefox */
+  }
+  .tabs-bar::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+  .tab-btn { flex-shrink: 0; }
+
+  /* Breakpoints */
+  @media (max-width: 1024px) {
+    .page { padding: 15px; }
+    .hero { padding: 20px; }
+    .hero-title { font-size: 18px; }
+  }
+
+  @media (max-width: 768px) {
+    .topbar { padding: 0 15px; height: auto; padding-top: 10px; padding-bottom: 10px; flex-direction: column; gap: 10px; text-align: center; }
+    .topbar-right { justify-content: center; width: 100%; }
+    .tabs-bar { top: 0; position: relative; } /* Sticky tabs can be annoying on very small screens */
+    .hero { flex-direction: column; text-align: center; }
+    .hero-badge { margin-top: 15px; align-self: center; }
+    .kpi-strip { grid-template-columns: 1fr 1fr; }
+    
+    /* Histology Side-by-Side fix */
+    .card div[style*="grid-template-columns:1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+    
+    /* Professional Team Grid */
+    .card div[style*="grid-template-columns:repeat(3,1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .kpi-strip { grid-template-columns: 1fr; }
+    .hero-title { font-size: 16px; }
+    .kpi-value { font-size: 18px; }
+    .card { padding: 15px; }
+  }
+
 </style>
 </head>
 <body>
@@ -1049,7 +1127,7 @@
             <tr><td>דרישות רגולטוריות מחמירות</td><td>עבודה לפי תקנים בינלאומיים, בדיקות בגופים מוסמכים</td></tr>
             <tr><td>מורכבות מערכתית</td><td>חלוקה לתתי-משימות עם Traceability מלא</td></tr>
             <tr><td>זמני בדיקות ארוכים</td><td>תכנון מקדים ובדיקות מואצות היכן שניתן</td></tr>
-          </table>
+          </table></div>
         </div>
       </div>
     </div>
@@ -1156,7 +1234,7 @@
             <tr><td>חוסר תקדים רגולטורי ברור</td><td>יועצים מנוסים + הידברות מוקדמת עם FDA</td></tr>
             <tr><td>משאבים מוגבלים לסטארטאפ</td><td>QMS רזה + תיעדוף משימות קריטיות</td></tr>
             <tr><td>דרישות בטיחות ללייזר רפואי</td><td>תכנון מוקדם לעמידה בתקנים</td></tr>
-          </table>
+          </table></div>
         </div>
       </div>
     </div>
@@ -1254,7 +1332,7 @@
             <tr><td>שונות רגולטורית בין מדינות</td><td>ליווי רגולטורי מקצועי + פרוטוקול אחיד</td></tr>
             <tr><td>אחידות ביצוע בין מרכזים</td><td>הכשרות מסודרות + ניטור קליני שוטף</td></tr>
             <tr><td>ניהול הנתונים</td><td>CRF אלקטרוני + Data Management Plan</td></tr>
-          </table>
+          </table></div>
         </div>
       </div>
     </div>
@@ -1390,7 +1468,7 @@
 
   <div class="section-label">ALVIV מול פתרונות קיימים</div>
   <div class="card" style="margin-bottom:22px;padding:0;overflow:hidden;">
-    <table class="vs-table">
+    <div class="vs-table-wrap"><table class="vs-table">
       <thead>
         <tr>
           <th style="width:20%;">קריטריון</th>
@@ -1467,7 +1545,7 @@
           <td class="vs-good">✓ מיועד לכך</td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
   </div>
 
   <!-- ── SECTION 3: TRL ── -->
@@ -1900,7 +1978,7 @@
             <td class="bt-amount">₪2,162,880</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div style="margin-top:16px;">
         <div class="card-title" style="color:#888;font-size:10px;margin-top:8px;">ציוד ופחת</div>
@@ -1915,7 +1993,7 @@
               <td class="bt-amount">₪104,533</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
       </div>
     </div>
   </div>
@@ -1980,7 +2058,7 @@
             <td class="bt-amount">₪1,366,400</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
 
     <!-- Abroad -->
@@ -2024,7 +2102,7 @@
             <td class="bt-amount">₪2,441,375</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div style="margin-top:12px;background:#FEF8EC;border:1px solid #F5D88A;border-radius:8px;padding:10px 12px;">
         <div style="font-size:10px;font-weight:600;color:#7a4a08;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">שים לב — הגשה לרשות</div>
@@ -2416,7 +2494,7 @@
   <!-- ── FULL COMPARISON TABLE ── -->
   <div class="section-label">טבלת השוואה מקיפה — ALVIV מול כל המתחרים</div>
   <div class="card" style="margin-bottom:22px;padding:0;overflow:hidden;">
-    <table class="vs-table">
+    <div class="vs-table-wrap"><table class="vs-table">
       <thead>
         <tr>
           <th style="width:16%;">קריטריון</th>
@@ -2529,7 +2607,7 @@
           <td class="vs-mid">FIH הושלם ✓ · רב-מרכזי בתהליך</td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
   </div>
 
   <!-- ── REVENUE FORECAST ── -->
